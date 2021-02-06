@@ -1,0 +1,16 @@
+.container-outer1 {
+    background-color: black;
+}
+#btn-login1 {
+    margin-left: 93%;
+    margin-top: 0%;
+}
+.app-logo {
+    animation: app-logo-spin infinite 8s linear;
+    height: 35px;
+    background: #ff7f7f;
+ }
+ 
+ @keyframes app-logo-spin {
+    from { transform: scaleX(-1); }
+ }
