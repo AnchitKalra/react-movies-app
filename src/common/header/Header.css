@@ -28,7 +28,15 @@
     transform: translate(-50%, -50%);
     align-content: center;
 }
-
+.dispNone {
+    display: none;
+}
+.dispBlock {
+    display: block;
+}
+.red {
+    color: red;
+}
  @keyframes app-logo-spin {
     from { transform: scaleX(-1); }
  }
