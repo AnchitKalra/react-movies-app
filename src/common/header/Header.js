@@ -42,7 +42,7 @@ class Header extends Component {
             passRequired: 'dispNone',
             password1: '',
             numberRequired: 'dispNone',
-            number: '',
+            number: ''
 
 
 
