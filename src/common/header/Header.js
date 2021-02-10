@@ -12,7 +12,7 @@ import { FormControl } from '@material-ui/core';
 
 const TabControl = function (props) {
     return (
-        <Typography component='div' style={{ padding: 0 }}>
+        <Typography component='div' style={{ padding: 0, textAlign: 'center' }}>
             {props.children}
         </Typography>
 
@@ -58,7 +58,7 @@ class Header extends Component {
                 <Button id="btn-login1" variant="contained" onClick={this.openModalHandler} onMouseLeave={this.onModelOpen}>Login</Button>
                 <div style={{ display: 'table' }}>
                     <Modal ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login" onRequestClose={this.closeModalHandler} style={{ display: 'table' }}>
-                        <Tabs value={this.state.value} onChange={this.tabChangeHandler}>
+                        <Tabs value={this.state.value} onChange={this.tabChangeHandler} style={{ marginBottom: '20px' }}>
                             <Tab label="Login">
                             </Tab>
                             <Tab label="Register" />
@@ -68,11 +68,13 @@ class Header extends Component {
                                 <InputLabel htmlFor='my-input'>Username:</InputLabel>
                                 <Input id="my-input" type='text' />
                             </FormControl>
-
+                            <br /><br />
                             <FormControl required>
                                 <InputLabel htmlFor='my-input-pass'>Password:</InputLabel>
                                 <Input id='my-input-pass' type='password' />
                             </FormControl>
+                            <br /> <br />
+                            <Button variant="contained" color='primary'>Login</Button>
 
                         </TabControl>
                     </Modal>
