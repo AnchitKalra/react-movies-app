@@ -3,12 +3,15 @@ import './Home.css';
 import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import moviesData from '../../common/Movies';
+import genres from '../../common/genre.js';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import { Card, Input, InputLabel, Typography } from '@material-ui/core';
+import { Card, Checkbox, Input, InputLabel, MenuItem, Typography } from '@material-ui/core';
 import { CardContent } from '@material-ui/core/';
 import { FormControl } from '@material-ui/core';
+import { Select } from '@material-ui/core';
+import { ListItemText } from '@material-ui/core';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -40,12 +43,16 @@ class Home extends Component {
     constructor() {
         super()
         this.state = {
-            movieName : ""
+            movieName: "",
+            genres: []
         }
     }
     onChangeHandler = (e) => {
-        this.setState({movieName : e.target.value})
+        this.setState({ movieName: e.target.value })
         //console.log(this.state.movieName)
+    }
+    genreSelectHandler = (e) => {
+        this.setState({ genres: e.target.value })
     }
     date = function (movieDate) {
         let d = new Date(movieDate)
@@ -75,8 +82,8 @@ class Home extends Component {
                     })}
 
                 </GridList>
-                <div className = "flex-container">
-                    <div className = "left">
+                <div className="flex-container">
+                    <div className="left">
                         <GridList cols={3} className="gridcontainer">
                             {moviesData.map(movie => {
                                 return (
@@ -87,21 +94,42 @@ class Home extends Component {
                                 )
                             })}
                         </GridList>
-                        </div>
-                        <div className="right">
-                            <Card>
-                                <CardContent>
-                                    <FormControl className = {classes.formControl}>
-                                        <Typography className = {classes.title} color = "textSecondary">
-                                            FIND MOVIE BY:
+                    </div>
+                    <div className="right">
+                        <Card>
+                            <CardContent>
+                                <FormControl className={classes.formControl}>
+                                    <Typography className={classes.title} color="textSecondary">
+                                        FIND MOVIE BY:
                                         </Typography>
-                                        </FormControl>  
-                                        <FormControl className = {classes.formControl}>
-                                            <InputLabel htmlFor = 'movieName'>Type Movie Name:</InputLabel>
-                                            <Input type = 'text' id = 'movieName' onChange = {this.onChangeHandler}></Input>
-                                            </FormControl>    
-                                </CardContent>
-                            </Card>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel htmlFor='movieName'>Movie Name</InputLabel>
+                                    <Input type='text' id='movieName' onChange={this.onChangeHandler}></Input>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel htmlFor='select-multiple-checkbox'>Genre</InputLabel>
+                                    <Select
+                                        multiple
+                                        input={<Input id="select-multiple-checkbox" />}
+                                        renderValue={selected => selected.join(',')}
+                                        value={this.state.genres}
+                                        onChange={this.genreSelectHandler}>
+                                        <MenuItem value="0">None</MenuItem>
+                                        {genres.map(
+                                            genre => {
+                                                return (
+                                                    <MenuItem key={genre.id} value={genre.name}>
+                                                        <Checkbox checked={this.state.genres.indexOf(genre.name) > -1} />
+                                                        <ListItemText primary={genre.name} />
+                                                    </MenuItem>
+                                                )
+                                            }
+                                        )}
+                                    </Select>
+                                </FormControl>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </div>
