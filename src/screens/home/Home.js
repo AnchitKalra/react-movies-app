@@ -13,6 +13,7 @@ import { CardContent } from '@material-ui/core/';
 import { FormControl } from '@material-ui/core';
 import { Select } from '@material-ui/core';
 import { ListItemText } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -153,6 +154,12 @@ class Home extends Component {
                                             }
                                         )}
                                     </Select>
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <TextField id="release-date-start" label="Release Date Start" type="Date" InputLabelProps={{ shrink: true }} />
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <TextField id="release-date-to" label="Release Date To" type="Date" InputLabelProps={{ shrink: true }} />
                                 </FormControl>
                             </CardContent>
                         </Card>
