@@ -36,6 +36,7 @@
 }
 .red {
     color: red;
+
 }
  @keyframes app-logo-spin {
     from { transform: scaleX(-1); }
