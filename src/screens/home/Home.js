@@ -104,7 +104,7 @@ class Home extends Component {
                         <GridList cols={3} className="gridcontainer">
                             {moviesData.map(movie => {
                                 return (
-                                    <GridListTile key={movie.id} onClick={() => this.onMovieClickHandler(movie.id)}>
+                                    <GridListTile key={movie.id} style = {{cursor : 'pointer'}}onClick={() => this.onMovieClickHandler(movie.id)}>
                                         <img src={movie.poster_url} alt={movie.title} className="upcoming" />
                                         <GridListTileBar title={movie.title} subtitle={this.date(movie.release_date)} />
                                     </GridListTile>
