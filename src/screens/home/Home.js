@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDom  from "react-dom";
+import ReactDOM from "react-dom";
 import './Home.css';
 import Header from '../../common/header/Header';
 import Details from '../details/Details';
@@ -55,7 +55,7 @@ class Home extends Component {
     }
     onMovieClickHandler = (movieId) => {
         console.log(movieId)
-        ReactDom.render(
+        ReactDOM.render(
             <Details movieId={movieId} />,
             document.getElementById('root')
         )
