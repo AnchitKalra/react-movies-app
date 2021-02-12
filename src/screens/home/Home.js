@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import ReactDom  from "react-dom";
 import './Home.css';
 import Header from '../../common/header/Header';
+import Details from '../details/Details';
 import { withStyles } from '@material-ui/core/styles';
 import moviesData from '../../common/Movies';
 import genres from '../../common/genre';
@@ -14,6 +16,7 @@ import { FormControl } from '@material-ui/core';
 import { Select } from '@material-ui/core';
 import { ListItemText } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -40,7 +43,7 @@ const styles = theme => ({
         color: theme.palette.primary.light,
     }
 });
-
+ 
 class Home extends Component {
     constructor() {
         super()
@@ -49,6 +52,13 @@ class Home extends Component {
             genres: [],
             artists: []
         }
+    }
+    onMovieClickHandler = (movieId) => {
+        console.log(movieId)
+        ReactDom.render(
+            <Details movieId={movieId} />,
+            document.getElementById('root')
+        )
     }
     onChangeHandler = (e) => {
         this.setState({ movieName: e.target.value })
@@ -68,6 +78,7 @@ class Home extends Component {
             "Release Date: " + d[0]
         );
     }
+
 
     render() {
         const { classes } = this.props;
@@ -93,7 +104,7 @@ class Home extends Component {
                         <GridList cols={3} className="gridcontainer">
                             {moviesData.map(movie => {
                                 return (
-                                    <GridListTile key={movie.id} >
+                                    <GridListTile key={movie.id} onClick={() => this.onMovieClickHandler(movie.id)}>
                                         <img src={movie.poster_url} alt={movie.title} className="upcoming" />
                                         <GridListTileBar title={movie.title} subtitle={this.date(movie.release_date)} />
                                     </GridListTile>
@@ -159,7 +170,10 @@ class Home extends Component {
                                     <TextField id="release-date-start" label="Release Date Start" type="Date" InputLabelProps={{ shrink: true }} />
                                 </FormControl>
                                 <FormControl className={classes.formControl}>
-                                    <TextField id="release-date-to" label="Release Date To" type="Date" InputLabelProps={{ shrink: true }} />
+                                    <TextField id="release-date-to" label="Release Date End" type="Date" InputLabelProps={{ shrink: true }} />
+                                </FormControl>
+                                <FormControl className={classes.formControl}>
+                                    <Button variant="contained" color='primary'>APPLY</Button>
                                 </FormControl>
                             </CardContent>
                         </Card>
