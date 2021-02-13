@@ -1,9 +1,20 @@
 .container-outer1 {
-    background-color: black;
+    background-color: #222;
+    height: 75px;
+    padding: 8px 32px 8px 16px;
+}
+.book-show-button-conatiner1{
+  margin-top: 0%;
+ 
+}
+#book-show {
+    float: right;
+    margin-right: 8px;
 }
 #btn-login1 {
-    margin-left: 80%;
-    margin-top: 0%;
+    float: right;
+    margin-bottom: 0%;
+   
 }
 .app-logo {
     animation: app-logo-spin infinite 8s linear;

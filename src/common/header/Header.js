@@ -11,6 +11,8 @@ import { Input } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
 import { FormHelperText } from '@material-ui/core';
+import BookShow from '../../screens/bookshow/BookShow';
+import ReactDOM from 'react-dom';
 
 const TabContainer = function (props) {
     return (
@@ -110,6 +112,12 @@ class Header extends Component {
     onNumberChangeHandler = (e) => {
         this.setState({ number: e.target.value });
     }
+    bookShowHandler = () => {
+        ReactDOM.render(
+            <BookShow />,
+            document.getElementById('root')
+        )
+    }
 
 
     render() {
@@ -119,8 +127,14 @@ class Header extends Component {
 
             <div className="container-outer1">
                 <img src={logo} className="app-logo" alt="logo" />
+                <div>
                 <Button id="btn-login1" variant="contained" onClick={this.openModalHandler} onMouseLeave={this.onModelOpen}>Login</Button>
-                <div style={{ display: 'table' }}>
+                </div>
+                {this.props.showBookShowButton === "true"?<div className = "book-show-button-conatiner1">
+                
+                    <Button id = "book-show" variant = 'contained' color = 'primary' onClick = {this.bookShowHandler}>BOOK SHOW</Button>
+                    </div>: ""} 
+                <div style={{ display: 'table' ,marginBottom : '0'}}>
                     <Modal ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login" onRequestClose={this.closeModalHandler}>
                         <Tabs value={this.state.value} onChange={this.tabChangeHandler} style={{ marginBottom: '20px' }}>
                             <Tab label="Login">

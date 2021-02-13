@@ -91,7 +91,7 @@ class Details extends Component {
         return (
 
             <div className="details">
-                <Header />
+                <Header showBookShowButton = "true"/>
                 <Typography onClick={this.backToHomeHandler} style={{ cursor: 'pointer' }}> Back To Home </Typography>
                 <div className='flex-conatinerDetails' style={{ display: 'flex' }}>
                     <div className="leftDetails">
